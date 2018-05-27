@@ -61,7 +61,7 @@ export class EventListComponent implements OnInit {
     let hours = 0;
     this.events.forEach(element => {
       console.log(element);
-      if (element.format === "Audio") {
+      if (element.format === 'Audio') {
       hours += element.hours;
       }
     });

@@ -124,18 +124,18 @@
   <div class="col-3"></div>
   <div class="col-6 centered">
     <h2>Edit Event</h2>
-    <form #editForm="ngForm">
-      <input type="text" name="title" [(ngModel)]="editReadEvent.title">
+    <form #editForm="ngForm" class="form-group">
+      <input class="form-control" type="text" name="title" [(ngModel)]="editReadEvent.title">
       <br>
-      <input type="text" name="author" [(ngModel)]="editReadEvent.author">
+      <input class="form-control" type="text" name="author" [(ngModel)]="editReadEvent.author">
       <br>
-      <input type="text" name="format" [(ngModel)]="editReadEvent.format">
+      <input class="form-control" type="text" name="format" [(ngModel)]="editReadEvent.format">
       <br>
-      <input type="number" name="hours" [(ngModel)]="editReadEvent.hours">
+      <input class="form-control" type="number" name="hours" [(ngModel)]="editReadEvent.hours">
       <br>
-      <input type="text" name="isFiction" [(ngModel)]="editReadEvent.isFiction">
+      <input class="form-control" type="text" name="isFiction" [(ngModel)]="editReadEvent.isFiction">
       <br>
-      <input type="date" name="date" [(ngModel)]="editReadEvent.date">
+      <input class="form-control" type="date" name="date" [(ngModel)]="editReadEvent.date">
       <br>
       <button (click)="cancelEdit()">Cancel</button>
       <button (click)="updateReadEvent(editReadEvent)">Save</button>
@@ -147,20 +147,20 @@
 
 <div class="row" *ngIf="showCreateForm">
   <div class="col-3"></div>
-  <div class="col-6 centered">
+  <div class="col-6 centered form-group">
     <h2>Create New Event</h2>
-    <form  #editForm="ngForm" >
-      <input type="text" placeholder="Title" name="title" [(ngModel)]="addEvent.title">
+    <form  #editForm="ngForm" class="form-group" >
+      <input class="form-control" type="text" placeholder="Title" name="title" [(ngModel)]="addEvent.title">
       <br>
-      <input type="text" placeholder="Author" name="author" [(ngModel)]="addEvent.author">
+      <input class="form-control" type="text" placeholder="Author" name="author" [(ngModel)]="addEvent.author">
       <br>
-      <input list="formats" name="format" placeholder="Format" [(ngModel)]="addEvent.format">
+      <input class="form-control" list="formats" name="format" placeholder="Format" [(ngModel)]="addEvent.format">
       <br>
-      <input type="number" placeholder="Hours" name="hours" [(ngModel)]="addEvent.hours">
+      <input class="form-control"  type="number" placeholder="Hours" name="hours" [(ngModel)]="addEvent.hours">
       <br>
-      <input list="isFiction" name="isFiction" placeholder="Fiction" [(ngModel)]="addEvent.isFiction">
+      <input class="form-control" list="isFiction" name="isFiction" placeholder="Fiction" [(ngModel)]="addEvent.isFiction">
       <br>
-      <input type="date" name="date" [(ngModel)]="addEvent.date">
+      <input class="form-control" type="date" name="date" [(ngModel)]="addEvent.date">
       <br>
       <button (click)="cancelEdit()">Cancel</button>
       <button (click)="onSubmit(addEvent)">Save</button>

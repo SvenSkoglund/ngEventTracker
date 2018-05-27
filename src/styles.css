@@ -46,7 +46,7 @@ table {
 .top-header {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: ivory;
+  background-color: rgba(255, 255, 240, 0.616);
   border-radius: 10px;
   border: 1px solid lightseagreen ;
 }
