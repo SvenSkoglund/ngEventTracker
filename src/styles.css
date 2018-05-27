@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+.centered {
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+.table-striped {
+    width: 100% !important;
+    background-color: rgba(255, 255, 255, 0.733);
+    opacity: 100;
+
+}
+tr {
+  width: 100% !important;
+
+}
+
+tbody {
+  width: 100% !important;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+body {
+  background-color: rgb(169, 255, 219);
+  font-family: 'Verdana';
+}
+
+button, table {
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid lightseagreen ;
+
+}
+table {
+  display: table !important;
+}
+
+.top-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: ivory;
+  border-radius: 10px;
+  border: 1px solid lightseagreen ;
+}
+
+h1 {
+  font-weight: bolder;
+
+}

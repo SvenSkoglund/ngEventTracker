@@ -1,0 +1,179 @@
+<div class="container ">
+  <div class="row centered">
+    <div class="col-3 "></div>
+    <div class="col-6 centered top-header">
+      <h1>Reading Tracker</h1>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<div class="row" >
+  <div class="col-2 "></div>
+  <div  *ngIf='showTable' class="col-8 centered">
+
+    <table class="table table-striped">
+      <thead>
+        <td><strong>Title</strong></td>
+        <td><strong>Author</strong></td>
+        <td><strong>Format</strong></td>
+        <td><strong>Hours</strong></td>
+        <td><strong>Fiction/Non-Fiction</strong></td>
+        <td><strong>Date</strong></td>
+        <td><strong>Delete</strong></td>
+
+      </thead>
+      <tr *ngFor='let event of events' (click)='displayEvent(event)'>
+        <td>{{event.title}}</td>
+        <td>{{event.author}}</td>
+        <td>{{event.format}}</td>
+        <td>{{event.hours}}</td>
+        <td *ngIf='event.isFiction'>Fiction</td>
+        <td *ngIf='!event.isFiction'>Non-Fiction</td>        <td>{{event.date}}</td>
+        <td>
+          <button (click)="deleteReadEvent(event.id)" class="btn-danger">X</button>
+        </td>
+      </tr>
+
+    </table>
+    <button (click)="showCreateEvent()">Create New Event</button>
+    <button (click)="showStatsTable()">Show Reading Stats</button>
+
+    <div class="col-2"></div>
+  </div>
+
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+
+    <div *ngIf='showStats' class="col-6 centered table-responsive">
+      <table class="table centered table-striped table-responsive">
+        <tr>
+          <td><strong>Total Events</strong></td>
+          <td>{{eventCount}}</td>
+        </tr>
+        <tr>
+          <td><strong>Total Hours </strong></td>
+          <td>{{totalHours}}</td>
+        </tr>
+        <tr>
+          <td><strong>Fiction Hours </strong></td>
+          <td>{{fictionHours}}</td>
+        </tr>
+        <tr>
+          <td><strong>Non-Fiction Hours </strong></td>
+          <td>{{nonFictionHours}}</td>
+        </tr>
+        <tr>
+          <td><strong>Audio Hours </strong></td>
+          <td>{{audioHours}}</td>
+        </tr>
+        <tr>
+          <td><strong>Text Hours</strong></td>
+          <td>{{textHours}}</td>
+        </tr>
+      </table>
+      <button (click)='displayTable()'>Return</button>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+
+<div class="row">
+  <div class="col-3"></div>
+
+  <div *ngIf='showSingle' class="col-6 centered table-responsive">
+    <table class="table centered table-striped table-responsive">
+      <tr>
+        <td><strong>ID</strong></td>
+        <td>{{selected.id}}</td>
+      </tr>
+      <tr>
+        <td><strong>Title</strong></td>
+        <td>{{selected.title}}</td>
+      </tr>
+      <tr>
+        <td><strong>Author</strong></td>
+        <td>{{selected.author}}</td>
+      </tr>
+      <tr>
+        <td><strong>Format</strong></td>
+        <td>{{selected.format}}</td>
+      </tr>
+      <tr>
+        <td><strong>Hours</strong></td>
+        <td>{{selected.hours}}</td>
+      </tr>
+      <tr>
+        <td><strong>Fiction</strong></td>
+        <td *ngIf='selected.isFiction'>Fiction</td>
+        <td *ngIf='!selected.isFiction'>Non-Fiction</td>
+      </tr>
+      <tr>
+        <td><strong>Date</strong></td>
+        <td>{{selected.date}}</td>
+      </tr>
+    </table>
+    <button (click)='setEditReadEvent(selected)'>Edit</button>
+    <button (click)='displayTable()'>Return</button>
+  </div>
+  <div class="col-3"></div>
+</div>
+
+<div class="row" *ngIf="showEditForm" >
+  <div class="col-3"></div>
+  <div class="col-6 centered">
+    <h2>Edit Event</h2>
+    <form #editForm="ngForm">
+      <input type="text" name="title" [(ngModel)]="editReadEvent.title">
+      <br>
+      <input type="text" name="author" [(ngModel)]="editReadEvent.author">
+      <br>
+      <input type="text" name="format" [(ngModel)]="editReadEvent.format">
+      <br>
+      <input type="number" name="hours" [(ngModel)]="editReadEvent.hours">
+      <br>
+      <input type="text" name="isFiction" [(ngModel)]="editReadEvent.isFiction">
+      <br>
+      <input type="date" name="date" [(ngModel)]="editReadEvent.date">
+      <br>
+      <button (click)="cancelEdit()">Cancel</button>
+      <button (click)="updateReadEvent(editReadEvent)">Save</button>
+    </form>
+  </div>
+  <div class="col-3"></div>
+
+</div>
+
+<div class="row" *ngIf="showCreateForm">
+  <div class="col-3"></div>
+  <div class="col-6 centered">
+    <h2>Create New Event</h2>
+    <form  #editForm="ngForm" >
+      <input type="text" placeholder="Title" name="title" [(ngModel)]="addEvent.title">
+      <br>
+      <input type="text" placeholder="Author" name="author" [(ngModel)]="addEvent.author">
+      <br>
+      <input list="formats" name="format" placeholder="Format" [(ngModel)]="addEvent.format">
+      <br>
+      <input type="number" placeholder="Hours" name="hours" [(ngModel)]="addEvent.hours">
+      <br>
+      <input list="isFiction" name="isFiction" placeholder="Fiction" [(ngModel)]="addEvent.isFiction">
+      <br>
+      <input type="date" name="date" [(ngModel)]="addEvent.date">
+      <br>
+      <button (click)="cancelEdit()">Cancel</button>
+      <button (click)="onSubmit(addEvent)">Save</button>
+    </form>
+    <div class="col-3"></div>
+
+  </div>
+
+  <datalist id="formats">
+    <option value="Text">
+      <option value="Audio">
+  </datalist>
+  <datalist id="isFiction">
+    <option value="true">
+      <option value="false">
+  </datalist>
